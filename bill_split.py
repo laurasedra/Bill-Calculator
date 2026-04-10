@@ -23,7 +23,7 @@ if tax_type == "Amount":
 else:
     tax_percent = st.number_input("Tax percent:")
     tax = total_price * (tax_percent / 100)
-    st.write(f"{tax_percent} tax: {tax}")
+    st.write(f"{tax_percent}% tax: ${tax}")
 
 tip = st.checkbox("Are you tipping?\n")
 if tip:
@@ -33,7 +33,7 @@ if tip:
     else:
         tip_percent = st.number_input("Tip percent:")
         tip = total_price * (tip_percent / 100)
-        st.write(f"{tip_percent} tip: {tip}")
+        st.write(f"{tip_percent}% tip: ${tip}")
 else:
     tip = 0
     
