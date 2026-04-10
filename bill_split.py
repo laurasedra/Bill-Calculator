@@ -23,7 +23,7 @@ if tax_type == "Amount":
 else:
     tax_percent = st.number_input("Tax percent:")
     tax = total_price * (tax_percent / 100)
-    st.write(f"{tax_percent}% tax: ${tax}")
+    st.write(f"{tax_percent}% tax: ${tax:.2f}")
 
 tip = st.checkbox("Are you tipping?\n")
 if tip:
@@ -33,7 +33,7 @@ if tip:
     else:
         tip_percent = st.number_input("Tip percent:")
         tip = total_price * (tip_percent / 100)
-        st.write(f"{tip_percent}% tip: ${tip}")
+        st.write(f"{tip_percent}% tip: ${tip:.2f}")
 else:
     tip = 0
     
@@ -58,7 +58,7 @@ if st.button("Calculate"):
             price_per_person = tax_split + total_split
     
     #output
-        st.write(f"Price per person: {price_per_person}")
+        st.write(f"Price per person: ${price_per_person:.2f}")
 
     else:
         st.write("You don't need this silly goose!")
