@@ -14,7 +14,7 @@ name = st.text_input("Name:\n")
 
 #setting up for the math
 
-total_price = st.number_input("Total amount (Include tax):\n")
+total_price = st.number_input("Total amount:\n")
 
 tax_type = st.radio("Tax input type:", ["Amount", "Percent"])
 
