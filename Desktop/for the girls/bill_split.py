@@ -8,7 +8,7 @@ key = st.secrets["SUPABASE_KEY"]
 supabase = create_client(url, key)
 
 
-st.title("Womanhood Bill Calculator by Laura <3")
+st.title("Bill Split Calculator by Laura")
 
 name = st.text_input("Name:\n")
 
@@ -16,12 +16,26 @@ name = st.text_input("Name:\n")
 
 total_price = st.number_input("Total amount (Include tax):\n")
 
-tax = st.number_input("Tax amount:\n")
+tax_type = st.radio("Tax input type:", ["Amount", "Percent"])
+
+if tax_type == "Amount":
+    tax = st.number_input("Tax amount:")
+else:
+    tax_percent = st.number_input("Tax percent:")
+    tax = total_price * (tax_percent / 100)
+    st.write(f"{tax_percent} tax: {tax}")
+
 tip = st.checkbox("Are you tipping?\n")
 if tip:
-    tip_amnt = st.number_input("How much tip?\n")
+    tip_type = st.radio("Tip input type:", ["Amount", "Percent"])
+    if tip_type == "Amount":
+        tip = st.number_input("Tip amount:")
+    else:
+        tip_percent = st.number_input("Tip percent:")
+        tip = total_price * (tip_percent / 100)
+        st.write(f"{tip_percent} tip: {tip}")
 else:
-    tip_amnt = 0
+    tip = 0
     
 people = st.number_input("How many people?\n", min_value=0, step=1)
 
@@ -37,8 +51,8 @@ if st.button("Calculate"):
     if people > 0:
         tax_split = tax / people
         total_split = (total_price - tax) / people
-        if tip_amnt:
-            tip_split = tip_amnt / people
+        if tip:
+            tip_split = tip / people
             price_per_person = tax_split + tip_split + total_split
         else:
             price_per_person = tax_split + total_split
