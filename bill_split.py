@@ -32,7 +32,7 @@ if st.button("Calculate"):
     #saves name to SUPABASE TABLE
 
     if name:
-        supabase.table("users").insert({"name": name}).execute()
+        supabase.table("BILL CALCULATOR USER LOG").insert({"name": name}).execute()
 
     if people > 0:
         tax_split = tax / people
