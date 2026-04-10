@@ -44,7 +44,7 @@ if st.button("Calculate"):
             price_per_person = tax_split + total_split
     
     #output
-        st.write(f"Price per person: {price_per_person}")
+        st.write(f"Price per person: ${price_per_person}")
 
     else:
         st.write("You don't need this silly goose!")
