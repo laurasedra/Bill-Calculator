@@ -49,14 +49,9 @@ if st.button("Calculate"):
         supabase.table("BILL CALCULATOR USER LOG").insert({"name": name}).execute()
 
     if people > 0:
-        tax_split = tax / people
-        total_split = (total_price - tax) / people
-        if tip:
-            tip_split = tip / people
-            price_per_person = tax_split + tip_split + total_split
-        else:
-            price_per_person = tax_split + total_split
-    
+        grand_total = tax + tip + total_price
+        total_split = grand_total / people
+        
     #output
         st.write(f"Price per person: ${price_per_person:.2f}")
 
