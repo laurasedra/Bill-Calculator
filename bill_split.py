@@ -53,7 +53,7 @@ if st.button("Calculate"):
         total_split = grand_total / people
         
     #output
-        st.write(f"Price per person: ${price_per_person:.2f}")
+        st.write(f"Price per person: ${total_split:.2f}")
 
     else:
         st.write("You don't need this silly goose!")
